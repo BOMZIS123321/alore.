@@ -141,39 +141,17 @@
             margin-bottom: 2.5rem;
         }
 
+        /* ZILAS SAKARU POGAS */
         .center-icon {
-            color: #111111;
+            color: #007bff;
             font-size: 2.2rem;
             text-decoration: none;
             transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
         }
 
         .center-icon:hover {
-            color: #495057;
+            color: #0056b3;
             transform: scale(1.15) translateY(-2px);
-        }
-
-        .cta-btn {
-            display: inline-block;
-            padding: 1rem 2.4rem;
-            font-size: 1rem;
-            font-weight: 600;
-            color: #111111;
-            background: rgba(255, 255, 255, 0.4);
-            border: 1px solid rgba(0, 0, 0, 0.08);
-            border-radius: 14px;
-            text-decoration: none;
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
-            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-        }
-
-        .cta-btn:hover {
-            background: rgba(255, 255, 255, 0.75);
-            border-color: rgba(0, 0, 0, 0.15);
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
         }
 
         @media (max-width: 768px) {
@@ -181,6 +159,7 @@
             h1 { font-size: 2.8rem; }
         }
     </style>
+    <script async type='module' src='https://interfaces.zapier.com/assets/web-components/zapier-interfaces/zapier-interfaces.esm.js'></script>
 </head>
 <body>
 
@@ -200,11 +179,9 @@
         <div class="subtitle" id="main-subtitle">AI Čatboti • Viedā Automatizācija • Web Izstrāde</div>
         
         <div class="center-socials">
-            <a href="https://instagram.com" target="_blank" class="center-icon"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:info@alore.io" class="center-icon"><i class="far fa-envelope"></i></a>
+            <a href="https://www.instagram.com/aloreweb/" target="_blank" class="center-icon"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:aloreweb@inbox.lv" class="center-icon"><i class="far fa-envelope"></i></a>
         </div>
-
-        <a href="mailto:info@alore.io" class="cta-btn" id="cta-button">Sazināties ar mums</a>
     </section>
 
     <script>
@@ -213,13 +190,11 @@
         const translations = {
             lv: {
                 title: "Palīdzam uzlabot biznesus",
-                subtitle: "AI Čatboti • Viedā Automatizācija • Web Izstrāde",
-                cta: "Sazināties ar mums"
+                subtitle: "AI Čatboti • Viedā Automatizācija • Web Izstrāde"
             },
             eng: {
                 title: "Helping businesses grow",
-                subtitle: "AI Chatbots • Smart Automation • Web Development",
-                cta: "Contact Us"
+                subtitle: "AI Chatbots • Smart Automation • Web Development"
             }
         };
 
@@ -227,13 +202,14 @@
             currentLang = lang;
             document.getElementById('main-title').innerHTML = translations[lang].title;
             document.getElementById('main-subtitle').innerText = translations[lang].subtitle;
-            document.getElementById('cta-button').innerText = translations[lang].cta;
             
             document.getElementById('btn-lv').classList.remove('active');
             document.getElementById('btn-eng').classList.remove('active');
             document.getElementById('btn-' + lang).classList.add('active');
         }
     </script>
+
+    <zapier-interfaces-chatbot-embed is-popup='true' chatbot-id='cmqla4dcn000uxy4usujl0rfz'></zapier-interfaces-chatbot-embed>
 
 </body>
 </html>
