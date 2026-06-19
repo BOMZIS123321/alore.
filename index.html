@@ -1,0 +1,239 @@
+<!DOCTYPE html>
+<html lang="lv">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alore | AI Chatbot Solutions</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@700;800&display=swap" rel="stylesheet">
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* Globālie stili */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body, html {
+            width: 100%;
+            height: 100%;
+            background-color: #f4f5f6;
+            color: #111111;
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            -webkit-font-smoothing: antialiased;
+        }
+
+        /* PREMIUM ANIMĒTAIS UN BLURRY FONS */
+        .background-container {
+            position: fixed;
+            top: -15%;
+            left: -15%;
+            width: 130%;
+            height: 130%;
+            z-index: 1;
+            background: linear-gradient(135deg, #e4e7eb, #f1f3f5, #e9ecef, #f8f9fa, #dee2e6);
+            background-size: 400% 400%;
+            animation: premiumGradient 20s ease infinite;
+            filter: blur(100px);
+        }
+
+        @keyframes premiumGradient {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Navigācijas josla */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 2.5rem 5rem;
+            z-index: 10;
+        }
+
+        .logo {
+            font-family: 'Outfit', sans-serif;
+            font-size: 1.8rem;
+            font-weight: 800;
+            letter-spacing: -1px;
+            color: #111111;
+            text-transform: lowercase;
+        }
+
+        /* Valodas slēdzis */
+        .lang-switcher {
+            display: flex;
+            gap: 0.6rem;
+            font-weight: 500;
+            font-size: 0.9rem;
+            letter-spacing: 0.5px;
+        }
+
+        .lang-btn {
+            color: #868e96;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            user-select: none;
+            padding: 2px 4px;
+        }
+
+        .lang-btn.active {
+            color: #111111;
+            font-weight: 600;
+        }
+
+        .lang-btn:hover {
+            color: #111111;
+        }
+
+        .lang-divider {
+            color: #adb5bd;
+        }
+
+        /* CENTRĀLAIS SATURS */
+        .hero-section {
+            position: relative;
+            z-index: 2;
+            width: 100%;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 2rem;
+        }
+
+        h1 {
+            font-family: 'Outfit', sans-serif;
+            font-size: 4.5rem;
+            font-weight: 800;
+            line-height: 1.1;
+            letter-spacing: -2px;
+            max-width: 850px;
+            margin-bottom: 1.5rem;
+            color: #111111;
+        }
+
+        .subtitle {
+            font-size: 1.1rem;
+            font-weight: 500;
+            color: #495057;
+            letter-spacing: 1.5px;
+            margin-bottom: 4rem;
+            text-transform: uppercase;
+        }
+
+        .center-socials {
+            display: flex;
+            gap: 2.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .center-icon {
+            color: #111111;
+            font-size: 2.2rem;
+            text-decoration: none;
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .center-icon:hover {
+            color: #495057;
+            transform: scale(1.15) translateY(-2px);
+        }
+
+        .cta-btn {
+            display: inline-block;
+            padding: 1rem 2.4rem;
+            font-size: 1rem;
+            font-weight: 600;
+            color: #111111;
+            background: rgba(255, 255, 255, 0.4);
+            border: 1px solid rgba(0, 0, 0, 0.08);
+            border-radius: 14px;
+            text-decoration: none;
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+            transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+        }
+
+        .cta-btn:hover {
+            background: rgba(255, 255, 255, 0.75);
+            border-color: rgba(0, 0, 0, 0.15);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+        }
+
+        @media (max-width: 768px) {
+            .navbar { padding: 2rem; }
+            h1 { font-size: 2.8rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background-container"></div>
+
+    <nav class="navbar">
+        <div class="logo">alore.</div>
+        <div class="lang-switcher">
+            <span class="lang-btn active" id="btn-lv" onclick="setLanguage('lv')">LV</span>
+            <span class="lang-divider">/</span>
+            <span class="lang-btn" id="btn-eng" onclick="setLanguage('eng')">ENG</span>
+        </div>
+    </nav>
+
+    <section class="hero-section">
+        <h1 id="main-title">Palīdzam uzlabot biznesus</h1>
+        <div class="subtitle" id="main-subtitle">AI Čatboti • Viedā Automatizācija • Web Izstrāde</div>
+        
+        <div class="center-socials">
+            <a href="https://instagram.com" target="_blank" class="center-icon"><i class="fab fa-instagram"></i></a>
+            <a href="mailto:info@alore.io" class="center-icon"><i class="far fa-envelope"></i></a>
+        </div>
+
+        <a href="mailto:info@alore.io" class="cta-btn" id="cta-button">Sazināties ar mums</a>
+    </section>
+
+    <script>
+        let currentLang = 'lv';
+
+        const translations = {
+            lv: {
+                title: "Palīdzam uzlabot biznesus",
+                subtitle: "AI Čatboti • Viedā Automatizācija • Web Izstrāde",
+                cta: "Sazināties ar mums"
+            },
+            eng: {
+                title: "Helping businesses grow",
+                subtitle: "AI Chatbots • Smart Automation • Web Development",
+                cta: "Contact Us"
+            }
+        };
+
+        function setLanguage(lang) {
+            currentLang = lang;
+            document.getElementById('main-title').innerHTML = translations[lang].title;
+            document.getElementById('main-subtitle').innerText = translations[lang].subtitle;
+            document.getElementById('cta-button').innerText = translations[lang].cta;
+            
+            document.getElementById('btn-lv').classList.remove('active');
+            document.getElementById('btn-eng').classList.remove('active');
+            document.getElementById('btn-' + lang).classList.add('active');
+        }
+    </script>
+
+</body>
+</html>
