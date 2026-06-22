@@ -71,6 +71,36 @@
             text-transform: lowercase;
         }
 
+        /* Labā puse navigācijā (Poga + Valoda) */
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        /* PIETEIKŠANĀS POGA */
+        .apply-btn {
+            background-color: #111111;
+            color: #ffffff;
+            border: none;
+            font-family: 'Inter', sans-serif;
+            font-size: 0.9rem;
+            font-weight: 600;
+            padding: 0.7rem 1.4rem;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-block;
+            text-align: center;
+        }
+
+        .apply-btn:hover {
+            background-color: #007bff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 12px rgba(0, 123, 255, 0.2);
+        }
+
         /* Valodas slēdzis */
         .lang-switcher {
             display: flex;
@@ -156,6 +186,7 @@
 
         @media (max-width: 768px) {
             .navbar { padding: 2rem; }
+            .nav-right { gap: 1rem; }
             h1 { font-size: 2.8rem; }
         }
     </style>
@@ -167,10 +198,14 @@
 
     <nav class="navbar">
         <div class="logo">alore.</div>
-        <div class="lang-switcher">
-            <span class="lang-btn active" id="btn-lv" onclick="setLanguage('lv')">LV</span>
-            <span class="lang-divider">/</span>
-            <span class="lang-btn" id="btn-eng" onclick="setLanguage('eng')">ENG</span>
+        <div class="nav-right">
+            <a href="pieteikties.html" class="apply-btn" id="nav-apply-btn">Pieteikties</a>
+            
+            <div class="lang-switcher">
+                <span class="lang-btn active" id="btn-lv" onclick="setLanguage('lv')">LV</span>
+                <span class="lang-divider">/</span>
+                <span class="lang-btn" id="btn-eng" onclick="setLanguage('eng')">ENG</span>
+            </div>
         </div>
     </nav>
 
@@ -180,7 +215,7 @@
         
         <div class="center-socials">
             <a href="https://www.instagram.com/aloreweb/" target="_blank" class="center-icon"><i class="fab fa-instagram"></i></a>
-            <a href="mailto:aloreweb@inbox.lv" class="center-icon"><i class="far fa-envelope"></i></a>
+            <a href="pieteikties.html" id="center-mail-btn" class="center-icon"><i class="far fa-envelope"></i></a>
         </div>
     </section>
 
@@ -190,11 +225,16 @@
         const translations = {
             lv: {
                 title: "Palīdzam uzlabot biznesus",
-                subtitle: "AI Čatboti • Viedā Automatizācija • Web Izstrāde"
+                subtitle: "AI Čatboti • Viedā Automatizācija • Web Izstrāde",
+                btnText: "Pieteikties",
+                mailLink: "pieteikties.html"
             },
             eng: {
                 title: "Helping businesses grow",
-                subtitle: "AI Chatbots • Smart Automation • Web Development"
+                subtitle: "AI Chatbots • Smart Automation • Web Development",
+                btnText: "Apply",
+                // Ja izveidosi angļu formas failu, šeit varēsi ierakstīt, piemēram, "apply.html"
+                mailLink: "pieteikties.html" 
             }
         };
 
@@ -202,6 +242,8 @@
             currentLang = lang;
             document.getElementById('main-title').innerHTML = translations[lang].title;
             document.getElementById('main-subtitle').innerText = translations[lang].subtitle;
+            document.getElementById('nav-apply-btn').innerText = translations[lang].btnText;
+            document.getElementById('center-mail-btn').setAttribute('href', translations[lang].mailLink);
             
             document.getElementById('btn-lv').classList.remove('active');
             document.getElementById('btn-eng').classList.remove('active');
